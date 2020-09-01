@@ -25,7 +25,7 @@
 
 ## Working with the api
 
-API: you can use the swagger docs on deliberry.localhost/api/docs
+API: you can use the swagger docs on `https://deliberry.localhost/api/docs`
 
 Init the project with dummy data running:
  
