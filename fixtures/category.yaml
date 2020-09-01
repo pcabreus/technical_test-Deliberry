@@ -1,0 +1,3 @@
+App\Infrastructure\Entity\Category:
+  category_{Short, T-Shirt}:
+    name: <current(4)>

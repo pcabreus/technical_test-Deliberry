@@ -1,0 +1,8 @@
+App\Infrastructure\Entity\Product:
+  product_{1..100}:
+    name: <sentence(2)>
+    basePrice: <numberBetween(100, 500)>
+    categories: "[@category_*]"
+    description: <text()>
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>

@@ -18,6 +18,13 @@
    
 3. Install dependencies and configurations:
     
-    ```
+   ```
    :/usr/src/app# symfony composer install
    :/usr/src/app# symfony console doc:migration:migrate
+   ```
+   
+4. Init the project with dummy data:
+ 
+    ```
+    :/usr/src/app# symfony console app:init
+    ```

@@ -22,7 +22,7 @@ class Product extends BaseProduct
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected int $id;
+    protected ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -42,7 +42,7 @@ class Product extends BaseProduct
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="products")
      */
-    protected Collection $categories;
+    protected iterable $categories;
 
     /**
      * @ORM\Column(type="datetime")
