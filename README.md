@@ -20,3 +20,4 @@
     
     ```
    :/usr/src/app# symfony composer install
+   :/usr/src/app# symfony console doc:migration:migrate
