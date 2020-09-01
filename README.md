@@ -35,4 +35,6 @@ Init the project with dummy data running:
 
 ## Tests
 
+You have to copy+paste the `phpunit.xml.dist` without the `.dist` extension 
+
 You can run `./vendor/bin/simple-phpunit` inside of the container in order to run the test
