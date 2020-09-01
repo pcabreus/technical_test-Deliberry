@@ -22,9 +22,17 @@
    :/usr/src/app# symfony composer install
    :/usr/src/app# symfony console doc:migration:migrate
    ```
-   
-4. Init the project with dummy data:
+
+## Working with the api
+
+API: you can use the swagger docs on deliberry.localhost/api/docs
+
+Init the project with dummy data running:
  
     ```
     :/usr/src/app# symfony console app:init
     ```
+
+## Tests
+
+You can run `./vendor/bin/simple-phpunit` inside of the container in order to run the test
