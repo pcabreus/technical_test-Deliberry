@@ -6,9 +6,11 @@ use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Infrastructure\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Domain\Model\Product as BaseProduct;
+use App\Domain\Model\Category as BaseCategory;
 
 /**
  * @ApiResource()
@@ -40,6 +42,7 @@ class Product extends BaseProduct
     protected ?string $description;
 
     /**
+     * @var Collection|BaseCategory[]
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="products")
      */
     protected iterable $categories;
@@ -53,4 +56,29 @@ class Product extends BaseProduct
      * @ORM\Column(type="datetime")
      */
     protected ?\DateTime $updatedAt;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->categories = new ArrayCollection();
+    }
+
+    public function addCategory(BaseCategory $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(BaseCategory $category): self
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+        }
+
+        return $this;
+    }
+
 }

@@ -2,22 +2,18 @@
 
 namespace App\Domain\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-
 abstract class Category
 {
     protected int $id;
 
     protected ?string $name;
 
-    /** @var Collection|Product[] */
-    protected Collection $products;
+    /** @var iterable|Product[] */
+    protected iterable $products;
 
     public function __construct(string $name = null)
     {
         $this->name = $name;
-        $this->products = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,30 +34,14 @@ abstract class Category
     }
 
     /**
-     * @return Collection|Product[]
+     * @return iterable|Product[]
      */
-    public function getProducts(): Collection
+    public function getProducts(): iterable
     {
         return $this->products;
     }
 
-    public function addProduct(Product $product): self
-    {
-        if (!$this->products->contains($product)) {
-            $this->products[] = $product;
-            $product->addCategory($this);
-        }
+    public abstract function addProduct(Product $product): self;
 
-        return $this;
-    }
-
-    public function removeProduct(Product $product): self
-    {
-        if ($this->products->contains($product)) {
-            $this->products->removeElement($product);
-            $product->removeCategory($this);
-        }
-
-        return $this;
-    }
+    public abstract function removeProduct(Product $product): self;
 }

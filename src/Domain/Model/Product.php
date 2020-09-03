@@ -2,9 +2,6 @@
 
 namespace App\Domain\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-
 abstract class Product implements Timestampable
 {
     protected ?int $id;
@@ -23,7 +20,6 @@ abstract class Product implements Timestampable
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
         $this->id = null;
         $this->createdAt = null;
         $this->updatedAt = null;
@@ -71,9 +67,9 @@ abstract class Product implements Timestampable
     }
 
     /**
-     * @return Collection|Category[]
+     * @return iterable|Category[]
      */
-    public function getCategories(): Collection
+    public function getCategories(): iterable
     {
         return $this->categories;
     }
@@ -85,23 +81,9 @@ abstract class Product implements Timestampable
         return $this;
     }
 
-    public function addCategory(Category $category): self
-    {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-        }
+    public abstract function addCategory(Category $category): self;
 
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->categories->contains($category)) {
-            $this->categories->removeElement($category);
-        }
-
-        return $this;
-    }
+    public abstract function removeCategory(Category $category): self;
 
     public function getCreatedAt(): ?\DateTime
     {

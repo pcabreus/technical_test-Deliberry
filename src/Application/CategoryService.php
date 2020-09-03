@@ -3,13 +3,12 @@
 namespace App\Application;
 
 use App\Domain\Command\CreateCategory;
-use Symfony\Component\Messenger\MessageBusInterface;
 
 class CategoryService
 {
-    private MessageBusInterface $messageBus;
+    private MessageBus $messageBus;
 
-    public function __construct(MessageBusInterface $messageBus)
+    public function __construct(MessageBus $messageBus)
     {
         $this->messageBus = $messageBus;
     }

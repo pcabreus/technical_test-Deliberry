@@ -33,6 +33,10 @@ services:
 
     App\Domain\Factory\CategoryFactory: '@App\Infrastructure\Factory\CategoryFactory'
     App\Domain\Persister\CategoryPersister: '@App\Infrastructure\Persister\CategoryPersister'
+    App\Application\MessageBus: '@App\Infrastructure\Messenger\MessageBus'
 
     App\Infrastructure\Api\DataPersister\DataPersister:
         decorates: 'api_platform.doctrine.orm.data_persister'
+
+    App\Infrastructure\Messenger\MessageBus:
+        decorates: 'Symfony\Component\Messenger\MessageBusInterface'
